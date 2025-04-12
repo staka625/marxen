@@ -1,10 +1,10 @@
-import type { FC } from "react";
+import type { FC } from 'react';
 
-import { Crepe } from "@milkdown/crepe";
-import { Milkdown, useEditor, MilkdownProvider } from "@milkdown/react";
+import { Crepe } from '@milkdown/crepe';
+import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
 
-import "@milkdown/crepe/theme/common/style.css";
-import "@milkdown/crepe/theme/nord-dark.css";
+import '@milkdown/crepe/theme/common/style.css';
+import '@milkdown/crepe/theme/nord-dark.css';
 
 const markdown = `# Milkdown React Crepe
 

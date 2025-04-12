@@ -1,7 +1,9 @@
-# Tauri + React + Typescript
+[![CI](https://github.com/staka625/marxen/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/staka625/marxen/actions/workflows/ci.yml)
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+# Marxen
 
-## Recommended IDE Setup
+**WYSIWYG Markdown Editor** with Vim mode.
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## For Developers
+
+[Contribution Guide](./docs/contribution-guide.md)
