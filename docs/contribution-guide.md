@@ -53,7 +53,7 @@ brew install libwebkit2gtk-4.0 cmake
 
 ```bash
 sudo apt update
-sudo apt install -y libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libsoup-3.0-dev
+sudo apt install -y libwebkit2gtk-4.1-dev build-essential curl wget file libssl-dev libsoup-3.0-dev
 ```
 
 ---
