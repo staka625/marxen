@@ -1,7 +1,6 @@
 import React from 'react';
 import FileTreeItem from './FileTreeItem';
-
-type FileElement = { name: string; children?: FileElement[] };
+import { FileElement } from '../../utils/types/FileElement';
 
 type FileTreeProps = {
   data: FileElement[];
