@@ -4,11 +4,11 @@ type VimModeReducerState = {
   mode: VimMode;
 };
 
-type VimMOdeReducerAction = { type: 'SET_MODE'; payload: VimMode };
+type VimModeReducerAction = { type: 'SET_MODE'; payload: VimMode };
 
 const vimModeReducer = (
   state: VimModeReducerState,
-  action: VimMOdeReducerAction
+  action: VimModeReducerAction
 ): VimModeReducerState => {
   switch (action.type) {
     case 'SET_MODE':
@@ -18,4 +18,4 @@ const vimModeReducer = (
   }
 };
 export default vimModeReducer;
-export type { VimModeReducerState, VimMOdeReducerAction };
+export type { VimModeReducerState, VimModeReducerAction };

@@ -18,12 +18,10 @@
   -webkit-text-size-adjust: 100%;
   scrollbar-width: thin;
 
-
   --normal-mode-bg-color: limegreen;
   --normal-mode-color: #f6f6f6;
   --insert-mode-bg-color: #20b9e8;
   --insert-mode-color: #f6f6f6;
-
 }
 
 .milkdown {
@@ -129,7 +127,6 @@ button {
   display: flex;
   flex-direction: column;
   height: 100vh;
-
 }
 
 .editor-container {
@@ -143,8 +140,8 @@ button {
   width: 100%;
 }
 
-.editor-content>div,
-.editor-content>div>div {
+.editor-content > div,
+.editor-content > div > div {
   height: 100%;
 }
 
