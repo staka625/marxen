@@ -31,7 +31,14 @@ const EditorContainer = () => {
     loadTheme();
   }, []);
 
-  const handleThemeSelect = (newTheme: string) => {
+  const handleThemeSelect = async (newTheme: string) => {
+    try {
+      const store = await Store.load(SETTINGS_FILE);
+      await store.set(THEME_KEY, newTheme);
+      await store.save();
+    } catch (error) {
+      console.error('Failed to save theme:', error);
+    }
     themeMap[newTheme as keyof typeof themeMap]?.();
   };
 
