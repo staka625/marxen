@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Store } from '@tauri-apps/plugin-store';
-import { themeMap } from './themeMap';
+import { DEFAULT_THEME, themeMap } from './themeMap';
 
 interface ThemeState {
   theme: string;
@@ -20,10 +20,10 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         if (savedTheme) {
           setThemeState(savedTheme);
         } else {
-          setThemeState('nord-dark');
+          setThemeState(DEFAULT_THEME);
         }
       } catch {
-        setThemeState('nord-dark');
+        setThemeState(DEFAULT_THEME);
       }
     };
 
