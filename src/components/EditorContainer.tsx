@@ -31,9 +31,10 @@ const EditorContainer = () => {
     loadTheme();
   }, []);
 
+  const { setTheme } = useTheme();
   const handleThemeSelect = (newTheme: string) => {
-    document.documentElement.setAttribute('data-theme', newTheme);
-    themeMap[newTheme as keyof typeof themeMap]?.();
+    setTheme(newTheme); // Update theme via ThemeProvider
+    themeMap[newTheme as keyof typeof themeMap]?.(); // Trigger side effects
   };
 
   useEffect(() => {
