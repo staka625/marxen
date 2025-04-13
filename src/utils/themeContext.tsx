@@ -10,7 +10,7 @@ interface ThemeState {
 const ThemeContext = createContext<ThemeState | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<string>('');
+  const [theme, setThemeState] = useState<string>(DEFAULT_THEME);
 
   useEffect(() => {
     const loadInitialTheme = async () => {
