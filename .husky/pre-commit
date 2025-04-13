@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+
+echo "Running pre-commit hooks..."
+git stash push --keep-index --include-untracked
+pnpm lint-staged
+pnpm build
+git stash pop
+echo "Pre-commit hooks completed."
