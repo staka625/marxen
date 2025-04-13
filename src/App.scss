@@ -113,6 +113,8 @@ button {
 
 .editor-container {
   display: flex;
+  flex: 1;
+  margin-top: var(--menu-bar-height); /* メニューバーの高さ分 */
 }
 
 .editor-content {

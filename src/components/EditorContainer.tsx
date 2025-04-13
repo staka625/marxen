@@ -79,9 +79,7 @@ const EditorContainer = () => {
 
   return (
     <div className="editor-container">
-      <div className="menu-bar">
-        <Menubar onThemeSelect={setTheme} />
-      </div>
+      <Menubar onThemeSelect={setTheme} />
       <div className="file-tree">
         <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />
       </div>
