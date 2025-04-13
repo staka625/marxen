@@ -16,12 +16,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  scrollbar-width: thin;
+
+  --normal-mode-bg-color: limegreen;
+  --normal-mode-color: #f6f6f6;
+  --insert-mode-bg-color: #20b9e8;
+  --insert-mode-color: #f6f6f6;
 }
 
 .milkdown {
-  min-height: 100vh;
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: auto;
 }
 
 .container {
@@ -116,12 +123,26 @@ button {
   }
 }
 
-.editor-container {
+.application-container {
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.editor-container {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
 }
 
 .editor-content {
   flex-grow: 1;
+  width: 100%;
+}
+
+.editor-content > div,
+.editor-content > div > div {
+  height: 100%;
 }
 
 .file-tree {
@@ -129,6 +150,7 @@ button {
   color: #f6f6f6;
   padding: 16px 8px 0 20px;
   min-width: 200px;
+  overflow: auto;
 }
 
 .file-tree-item {
@@ -143,7 +165,6 @@ button {
 .file-tree-icon {
   margin-left: -20px;
   margin-right: 4px;
-  /* フォルダっぽい色 */
   color: #fbc02d;
 }
 
@@ -160,4 +181,34 @@ button {
   background-color: inherit;
   transition: none;
   box-shadow: none;
+}
+
+/* status line */
+.status-line {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  background-color: #313235;
+  color: #f6f6f6;
+  position: sticky;
+  bottom: 0;
+}
+
+.mode-viewer {
+  display: flex;
+  height: 100%;
+  width: 90px;
+  padding: 0px 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.normal-mode {
+  background-color: var(--normal-mode-bg-color);
+  color: var(--normal-mode-color);
+}
+
+.insert-mode {
+  background-color: var(--insert-mode-bg-color);
+  color: var(--insert-mode-color);
 }
