@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useEffect, useReducer } from 'react';
+import { useReducer } from 'react';
 
 import { Crepe } from '@milkdown/crepe';
 import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
@@ -7,7 +7,6 @@ import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
 import '@milkdown/crepe/theme/common/style.css';
 import '@milkdown/crepe/theme/nord-dark.css';
 import { VimMode } from '../utils/enum/VimMode';
-import { themeMap } from '../utils/themeMap';
 import { useTheme } from '../utils/themeContext';
 import vimModeReducer from '../Reducer/VimModeReducer';
 
@@ -30,10 +29,6 @@ const MilkdownEditor: FC = () => {
     },
     [theme]
   );
-
-  useEffect(() => {
-    themeMap[theme]?.();
-  }, [theme]);
 
   return <Milkdown />;
 };
