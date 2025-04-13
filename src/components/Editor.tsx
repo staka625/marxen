@@ -33,7 +33,6 @@ const MilkdownEditor: FC = () => {
 
 interface MilkdownEditorWrapperProps {
   vimMode: { mode: VimMode };
-  dispatch: React.Dispatch<{ type: 'SET_MODE'; payload: VimMode }>;
 }
 
 export const MilkdownEditorWrapper: FC<MilkdownEditorWrapperProps> = ({ vimMode }) => {

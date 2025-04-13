@@ -15,22 +15,6 @@ const SETTINGS_FILE = 'marxen_settings.json';
 const EditorContainer = () => {
   const [vimMode, modeDispatch] = useReducer(vimModeReducer, { mode: VimMode.Normal });
 
-  const loadTheme = async () => {
-    try {
-      const store = await Store.load(SETTINGS_FILE);
-      const savedTheme = await store.get<string>(THEME_KEY);
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
-    } catch (error) {
-      console.error('Failed to load theme:', error);
-    }
-  };
-
-  useEffect(() => {
-    loadTheme();
-  }, []);
-
   const handleThemeSelect = async (newTheme: string) => {
     try {
       const store = await Store.load(SETTINGS_FILE);
@@ -109,7 +93,7 @@ const EditorContainer = () => {
             <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />
           </div>
           <div className="editor-content">
-            <MilkdownEditorWrapper vimMode={vimMode} dispatch={modeDispatch} />
+            <MilkdownEditorWrapper vimMode={vimMode} />
           </div>
         </div>
         <div className="status-line">
