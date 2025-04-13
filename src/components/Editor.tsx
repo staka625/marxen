@@ -6,7 +6,6 @@ import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
 import '@milkdown/crepe/theme/common/style.css';
 import '@milkdown/crepe/theme/nord-dark.css';
 import { VimMode } from '../utils/enum/VimMode';
-import { useTheme } from '../utils/themeContext';
 
 const markdown = `# Milkdown React Crepe
 
@@ -15,18 +14,13 @@ const markdown = `# Milkdown React Crepe
 This is a demo for using Crepe with **React**.`;
 
 const MilkdownEditor: FC = () => {
-  const { theme } = useTheme();
-
-  useEditor(
-    (root) => {
-      const crepe = new Crepe({
-        root,
-        defaultValue: markdown,
-      });
-      return crepe;
-    },
-    [theme]
-  );
+  useEditor((root) => {
+    const crepe = new Crepe({
+      root,
+      defaultValue: markdown,
+    });
+    return crepe;
+  });
 
   return <Milkdown />;
 };
