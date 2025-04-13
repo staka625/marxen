@@ -31,10 +31,19 @@ const EditorContainer = () => {
     loadTheme();
   }, []);
 
-  const { setTheme } = useTheme();
   const handleThemeSelect = (newTheme: string) => {
-    setTheme(newTheme);
     themeMap[newTheme as keyof typeof themeMap]?.();
+  };
+
+  const MenubarWithTheme = () => {
+    const { setTheme } = useTheme();
+
+    const handleThemeSelectWithContext = (newTheme: string) => {
+      setTheme(newTheme);
+      handleThemeSelect(newTheme);
+    };
+
+    return <Menubar onThemeSelect={handleThemeSelectWithContext} />;
   };
 
   useEffect(() => {
@@ -86,7 +95,7 @@ const EditorContainer = () => {
     <ThemeProvider>
       <div className="editor-container">
         <div className="menubar">
-          <Menubar onThemeSelect={handleThemeSelect} />
+          <MenubarWithTheme />
         </div>
         <div className="main-content">
           <div className="file-tree">
