@@ -5,27 +5,49 @@ import { MilkdownEditorWrapper } from './Editor';
 import FileTree from './fileTree/FileTree';
 import StatusLine from './statusLine/StatusLine';
 import { Menubar } from './menubar/Menubar';
-import { Store } from 'tauri-plugin-store-api';
+import { Store } from '@tauri-apps/plugin-store';
 import { themeMap } from '../utils/themeMap';
+
+const THEME_KEY = 'theme';
+const SETTINGS_FILE = 'marxen_settings.json';
 
 const EditorContainer = () => {
   const [vimMode, modeDispatch] = useReducer(vimModeReducer, { mode: VimMode.Normal });
   const [theme, setTheme] = useState('nord-dark');
 
-  useEffect(() => {
-    const store = new Store('.milkdown-store');
-    const THEME_KEY = 'theme';
-    store.get<string>(THEME_KEY).then((saved) => {
-      if (saved) setTheme(saved);
-    });
-  }, []);
+  const loadTheme = async () => {
+    try {
+      const store = await Store.load(SETTINGS_FILE);
+      const savedTheme = await store.get<string>(THEME_KEY);
+      if (savedTheme) {
+        setTheme(savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    } catch (error) {
+      console.error('Failed to load theme:', error);
+    }
+  };
+
+  const saveTheme = async (newTheme: string) => {
+    try {
+      const store = await Store.load(SETTINGS_FILE);
+      await store.set(THEME_KEY, newTheme);
+      await store.save();
+    } catch (error) {
+      console.error('Failed to save theme:', error);
+    }
+  };
 
   useEffect(() => {
-    const store = new Store('.milkdown-store');
-    themeMap[theme as keyof typeof themeMap]?.();
-    store.set('theme', theme);
-    store.save();
-  }, [theme]);
+    loadTheme();
+  }, []);
+
+  const handleThemeSelect = (newTheme: string) => {
+    setTheme(newTheme);
+    saveTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    themeMap[newTheme as keyof typeof themeMap]?.();
+  };
 
   useEffect(() => {
     const handleCaptureKeyDown = (event: KeyboardEvent) => {
@@ -74,7 +96,7 @@ const EditorContainer = () => {
 
   return (
     <div className="editor-container">
-      <Menubar onThemeSelect={setTheme} />
+      <Menubar onThemeSelect={handleThemeSelect} />
       <div className="file-tree">
         <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />
       </div>
