@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import vimModeReducer from '../Reducer/VimModeReducer';
 import { VimMode } from '../utils/enum/VimMode';
 import { MilkdownEditorWrapper } from './Editor';
@@ -7,34 +7,23 @@ import StatusLine from './statusLine/StatusLine';
 import { Menubar } from './menubar/Menubar';
 import { Store } from '@tauri-apps/plugin-store';
 import { themeMap } from '../utils/themeMap';
+import { ThemeProvider } from '../utils/themeContext';
 
 const THEME_KEY = 'theme';
 const SETTINGS_FILE = 'marxen_settings.json';
 
 const EditorContainer = () => {
   const [vimMode, modeDispatch] = useReducer(vimModeReducer, { mode: VimMode.Normal });
-  const [theme, setTheme] = useState('nord-dark');
 
   const loadTheme = async () => {
     try {
       const store = await Store.load(SETTINGS_FILE);
       const savedTheme = await store.get<string>(THEME_KEY);
       if (savedTheme) {
-        setTheme(savedTheme);
         document.documentElement.setAttribute('data-theme', savedTheme);
       }
     } catch (error) {
       console.error('Failed to load theme:', error);
-    }
-  };
-
-  const saveTheme = async (newTheme: string) => {
-    try {
-      const store = await Store.load(SETTINGS_FILE);
-      await store.set(THEME_KEY, newTheme);
-      await store.save();
-    } catch (error) {
-      console.error('Failed to save theme:', error);
     }
   };
 
@@ -43,8 +32,6 @@ const EditorContainer = () => {
   }, []);
 
   const handleThemeSelect = (newTheme: string) => {
-    setTheme(newTheme);
-    saveTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
     themeMap[newTheme as keyof typeof themeMap]?.();
   };
@@ -95,22 +82,24 @@ const EditorContainer = () => {
   };
 
   return (
-    <div className="editor-container">
-      <div className="menubar">
-        <Menubar onThemeSelect={handleThemeSelect} />
-      </div>
-      <div className="main-content">
-        <div className="file-tree">
-          <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />
+    <ThemeProvider>
+      <div className="editor-container">
+        <div className="menubar">
+          <Menubar onThemeSelect={handleThemeSelect} />
         </div>
-        <div className="editor-content">
-          <MilkdownEditorWrapper theme={theme} mode={vimMode.mode} />
+        <div className="main-content">
+          <div className="file-tree">
+            <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />
+          </div>
+          <div className="editor-content">
+            <MilkdownEditorWrapper />
+          </div>
+        </div>
+        <div className="status-line">
+          <StatusLine mode={vimMode.mode} />
         </div>
       </div>
-      <div className="status-line">
-        <StatusLine mode={vimMode.mode} />
-      </div>
-    </div>
+    </ThemeProvider>
   );
 };
 
