@@ -1,8 +1,5 @@
 .menu-bar {
   display: flex;
-  background-color: #2b2b2b;
-  color: #eee;
-  font-family: sans-serif;
   user-select: none;
 }
 
@@ -31,10 +28,24 @@
 }
 
 .dropdown-item {
-  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
   cursor: pointer;
+  height: var(--menu-bar-height);
+  background-color: #313235;
+  color: #f6f6f6;
 }
 
 .dropdown-item:hover {
-  background-color: #555;
+  background-color: #3c3c3c;
+}
+
+.menubar {
+  height: var(--menu-bar-height);
+  background-color: #313235;
+  color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

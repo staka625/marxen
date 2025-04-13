@@ -1,0 +1,31 @@
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.menubar {
+  height: var(--menu-bar-height);
+  flex-shrink: 0;
+}
+
+.status-line {
+  height: var(--status-line-height);
+  flex-shrink: 0;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.file-tree {
+  flex-basis: 20%;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.editor-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}

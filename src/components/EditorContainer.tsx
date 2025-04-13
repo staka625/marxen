@@ -96,14 +96,20 @@ const EditorContainer = () => {
 
   return (
     <div className="editor-container">
-      <Menubar onThemeSelect={handleThemeSelect} />
-      <div className="file-tree">
-        <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />
+      <div className="menubar">
+        <Menubar onThemeSelect={handleThemeSelect} />
       </div>
-      <div className="editor-content">
-        <MilkdownEditorWrapper theme={theme} mode={vimMode.mode} />
+      <div className="main-content">
+        <div className="file-tree">
+          <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />
+        </div>
+        <div className="editor-content">
+          <MilkdownEditorWrapper theme={theme} mode={vimMode.mode} />
+        </div>
       </div>
-      <StatusLine mode={vimMode.mode} />
+      <div className="status-line">
+        <StatusLine mode={vimMode.mode} />
+      </div>
     </div>
   );
 };

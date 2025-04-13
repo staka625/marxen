@@ -16,6 +16,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --normal-mode-bg-color: limegreen;
+  --normal-mode-color: #f6f6f6;
+  --insert-mode-bg-color: #20b9e8;
+  --insert-mode-color: #f6f6f6;
+  --menu-bar-height: 30px;
 }
 
 .milkdown {
@@ -113,15 +118,36 @@ button {
 
 .editor-container {
   display: flex;
-  flex: 1;
-  margin-top: var(--menu-bar-height); /* メニューバーの高さ分 */
+  flex-direction: column;
+  height: 100vh;
 }
 
-.editor-content {
-  flex-grow: 1;
+.menubar {
+  height: var(--menu-bar-height);
+  flex-shrink: 0;
+}
+
+.status-line {
+  height: var(--status-line-height);
+  flex-shrink: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  background-color: #313235;
+  color: #f6f6f6;
+  position: sticky;
+  bottom: 0;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
 }
 
 .file-tree {
+  flex-basis: 20%;
+  flex-shrink: 0;
+  overflow-y: auto;
   background-color: #313235;
   color: #f6f6f6;
   padding: 16px 8px 0 20px;
@@ -159,6 +185,11 @@ button {
   box-shadow: none;
 }
 
+.editor-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
 :root[data-theme='frame'] {
   --background-color: #ffffff;
 }
@@ -178,4 +209,23 @@ button {
 body {
   background-color: var(--background-color);
   transition: background-color 0.3s ease;
+}
+
+.mode-viewer {
+  display: flex;
+  height: 100%;
+  width: 90px;
+  padding: 0px 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.normal-mode {
+  background-color: var(--normal-mode-bg-color);
+  color: var(--normal-mode-color);
+}
+
+.insert-mode {
+  background-color: var(--insert-mode-bg-color);
+  color: var(--insert-mode-color);
 }
