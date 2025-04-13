@@ -7,13 +7,8 @@ import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
 import '@milkdown/crepe/theme/common/style.css';
 import '@milkdown/crepe/theme/nord-dark.css';
 import { VimMode } from '../utils/enum/VimMode';
+import { themeMap } from '../utils/themeMap';
 
-const themeMap: Record<string, () => Promise<void>> = {
-  frame: () => import('@milkdown/crepe/theme/frame.css').then(() => {}),
-  nord: () => import('@milkdown/crepe/theme/nord.css').then(() => {}),
-  'frame-dark': () => import('@milkdown/crepe/theme/frame-dark.css').then(() => {}),
-  'nord-dark': () => import('@milkdown/crepe/theme/nord-dark.css').then(() => {}),
-};
 const markdown = `# Milkdown React Crepe
 
 > You're scared of a world where you're needed.

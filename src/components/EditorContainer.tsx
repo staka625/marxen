@@ -6,6 +6,7 @@ import FileTree from './fileTree/FileTree';
 import StatusLine from './statusLine/StatusLine';
 import { Menubar } from './menubar/Menubar';
 import { Store } from 'tauri-plugin-store-api';
+import { themeMap } from '../utils/themeMap';
 
 const EditorContainer = () => {
   const [vimMode, modeDispatch] = useReducer(vimModeReducer, { mode: VimMode.Normal });
@@ -21,12 +22,6 @@ const EditorContainer = () => {
 
   useEffect(() => {
     const store = new Store('.milkdown-store');
-    const themeMap: Record<'frame' | 'nord' | 'frame-dark' | 'nord-dark', () => Promise<void>> = {
-      frame: () => import('@milkdown/crepe/theme/frame.css').then(() => {}),
-      nord: () => import('@milkdown/crepe/theme/nord.css').then(() => {}),
-      'frame-dark': () => import('@milkdown/crepe/theme/frame-dark.css').then(() => {}),
-      'nord-dark': () => import('@milkdown/crepe/theme/nord-dark.css').then(() => {}),
-    };
     themeMap[theme as keyof typeof themeMap]?.();
     store.set('theme', theme);
     store.save();
