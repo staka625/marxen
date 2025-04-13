@@ -92,7 +92,7 @@ const EditorContainer = () => {
             <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />
           </div>
           <div className="editor-content">
-            <MilkdownEditorWrapper />
+            <MilkdownEditorWrapper vimMode={vimMode} dispatch={modeDispatch} />
           </div>
         </div>
         <div className="status-line">

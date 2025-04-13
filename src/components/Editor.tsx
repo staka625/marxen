@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { useReducer } from 'react';
 
 import { Crepe } from '@milkdown/crepe';
 import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
@@ -8,7 +7,6 @@ import '@milkdown/crepe/theme/common/style.css';
 import '@milkdown/crepe/theme/nord-dark.css';
 import { VimMode } from '../utils/enum/VimMode';
 import { useTheme } from '../utils/themeContext';
-import vimModeReducer from '../Reducer/VimModeReducer';
 
 const markdown = `# Milkdown React Crepe
 
@@ -33,9 +31,12 @@ const MilkdownEditor: FC = () => {
   return <Milkdown />;
 };
 
-export const MilkdownEditorWrapper: FC = () => {
-  const [vimMode] = useReducer(vimModeReducer, { mode: VimMode.Normal });
+interface MilkdownEditorWrapperProps {
+  vimMode: { mode: VimMode };
+  dispatch: React.Dispatch<{ type: 'SET_MODE'; payload: VimMode }>;
+}
 
+export const MilkdownEditorWrapper: FC<MilkdownEditorWrapperProps> = ({ vimMode }) => {
   const onKeyDown = (event: React.KeyboardEvent) => {
     if (vimMode.mode !== VimMode.Insert) {
       event.preventDefault();
