@@ -7,7 +7,7 @@ import StatusLine from './statusLine/StatusLine';
 import { Menubar } from './menubar/Menubar';
 import { Store } from '@tauri-apps/plugin-store';
 import { themeMap } from '../utils/themeMap';
-import { ThemeProvider } from '../utils/themeContext';
+import { ThemeProvider, useTheme } from '../utils/themeContext';
 
 const THEME_KEY = 'theme';
 const SETTINGS_FILE = 'marxen_settings.json';
@@ -33,8 +33,8 @@ const EditorContainer = () => {
 
   const { setTheme } = useTheme();
   const handleThemeSelect = (newTheme: string) => {
-    setTheme(newTheme); // Update theme via ThemeProvider
-    themeMap[newTheme as keyof typeof themeMap]?.(); // Trigger side effects
+    setTheme(newTheme);
+    themeMap[newTheme as keyof typeof themeMap]?.();
   };
 
   useEffect(() => {
