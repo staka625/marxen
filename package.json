@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx,json}\"",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@milkdown/crepe": "^7.8.0",
@@ -34,9 +35,22 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^16.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.5.1",
     "prettier": "^3.5.3",
     "typescript": "~5.6.3",
     "typescript-eslint": "^8.29.1",
     "vite": "^6.0.3"
-  }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{ts,tsx,js,jsx,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "packageManager": "pnpm@9.2.0+sha512.98a80fd11c2e7096747762304106432b3ddc67dcf54b5a8c01c93f68a2cd5e05e6821849522a06fb76284d41a2660d5e334f2ee3bbf29183bf2e739b1dafa771"
 }
