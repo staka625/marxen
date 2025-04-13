@@ -6,7 +6,6 @@ import FileTree from './fileTree/FileTree';
 import StatusLine from './statusLine/StatusLine';
 import { Menubar } from './menubar/Menubar';
 import { Store } from '@tauri-apps/plugin-store';
-import { themeMap } from '../utils/themeMap';
 import { ThemeProvider, useTheme } from '../utils/themeContext';
 
 const THEME_KEY = 'theme';
@@ -23,7 +22,6 @@ const EditorContainer = () => {
     } catch (error) {
       console.error('Failed to save theme:', error);
     }
-    themeMap[newTheme as keyof typeof themeMap]?.();
   };
 
   const MenubarWithTheme = () => {
