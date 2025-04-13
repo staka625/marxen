@@ -5,6 +5,7 @@ import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
 
 import '@milkdown/crepe/theme/common/style.css';
 import '@milkdown/crepe/theme/nord-dark.css';
+import { VimMode } from '../utils/enum/VimMode';
 
 const markdown = `# Milkdown React Crepe
 
@@ -24,10 +25,23 @@ export const MilkdownEditor: FC = () => {
   return <Milkdown />;
 };
 
-export const MilkdownEditorWrapper: React.FC = () => {
+type MilkdownEditorWrapperProps = {
+  mode: VimMode;
+};
+
+export const MilkdownEditorWrapper: React.FC<MilkdownEditorWrapperProps> = ({ mode }) => {
+  const onKeyDown = (event: React.KeyboardEvent) => {
+    if (mode !== VimMode.Insert) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
   return (
-    <MilkdownProvider>
-      <MilkdownEditor />
-    </MilkdownProvider>
+    <div onKeyDownCapture={onKeyDown}>
+      <MilkdownProvider>
+        <MilkdownEditor />
+      </MilkdownProvider>
+    </div>
   );
 };
