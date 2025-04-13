@@ -1,9 +1,9 @@
 import React from 'react';
-import { MilkdownEditorWrapper } from './components/Editor';
 import './App.css';
+import EditorContainer from './components/EditorContainer';
 
 const App: React.FC = () => {
-  return <MilkdownEditorWrapper />;
+  return <EditorContainer />;
 };
 
 export default App;
