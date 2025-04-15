@@ -7,6 +7,7 @@ import StatusLine from './statusLine/StatusLine';
 import { Menubar } from './menubar/Menubar';
 import { Store } from '@tauri-apps/plugin-store';
 import { ThemeProvider, useTheme } from '../utils/themeContext';
+import './EditorContainer.scss';
 
 const THEME_KEY = 'theme';
 const SETTINGS_FILE = 'marxen_settings.json';

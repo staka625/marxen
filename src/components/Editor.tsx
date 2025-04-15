@@ -6,6 +6,7 @@ import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
 import '@milkdown/crepe/theme/common/style.css';
 import '@milkdown/crepe/theme/nord-dark.css';
 import { VimMode } from '../utils/enum/VimMode';
+import './Editor.scss';
 
 const markdown = `# Milkdown React Crepe
 
