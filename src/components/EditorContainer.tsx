@@ -84,9 +84,7 @@ const EditorContainer = () => {
   return (
     <ThemeProvider>
       <div className="editor-container">
-        <div className="menubar-container">
-          <MenubarWithTheme />
-        </div>
+        <MenubarWithTheme />
         <div className="main-content">
           <div className="file-tree">
             <FileTree data={fileTreeData} fileOpenHandler={fileOpenHandler} />

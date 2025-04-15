@@ -1,28 +1,32 @@
+@use '../../styles/variables' as v;
+
 .status-line {
-  height: 28px;
   display: flex;
   align-items: center;
-  background-color: #313235;
-  color: #f6f6f6;
+  background: v.$color-bg-statusbar;
+  color: #fff;
   position: sticky;
   bottom: 0;
+  width: 100%;
+  font-size: 13px;
+  z-index: 10;
 }
 
 .mode-viewer {
   display: flex;
-  height: 100%;
-  width: 90px;
-  padding: 0px 8px;
   align-items: center;
+  height: 100%;
+  min-width: 90px;
+  padding: 0 12px;
   justify-content: center;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 12px;
 }
-
 .normal-mode {
-  background-color: var(--normal-mode-bg-color);
-  color: var(--normal-mode-color);
+  background: v.$color-bg-normal-mode;
 }
-
 .insert-mode {
-  background-color: var(--insert-mode-bg-color);
-  color: var(--insert-mode-color);
+  background: v.$color-bg-insert-mode;
 }

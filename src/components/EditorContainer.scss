@@ -1,31 +1,37 @@
+@use '../styles/variables' as v;
+
 .editor-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  background: v.$color-bg;
 }
-
 .menubar-container {
-  height: var(--menu-bar-height);
+  height: v.$height-menubar;
   flex-shrink: 0;
 }
-
 .status-line {
-  height: var(--status-line-height);
+  height: v.$height-statusbar;
   flex-shrink: 0;
 }
-
 .main-content {
   display: flex;
-  flex: 1;
+  flex: 1 1 auto;
+  height: 100%;
 }
-
 .file-tree {
-  flex-basis: 20%;
+  width: v.$width-sidebar;
+  min-width: v.$width-sidebar;
+  max-width: v.$width-sidebar;
   flex-shrink: 0;
+  background: v.$color-bg-sidebar;
+  color: v.$color-fg;
+  border-right: 1px solid v.$color-border;
   overflow-y: auto;
+  height: 100%;
 }
-
 .editor-content {
-  flex-grow: 1;
+  flex: 1 1 0;
   overflow-y: auto;
+  background: v.$color-bg-panel;
 }

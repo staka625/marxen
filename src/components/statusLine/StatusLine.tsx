@@ -7,11 +7,7 @@ type StatusLineProps = {
 };
 
 const StatusLine = ({ mode }: StatusLineProps) => {
-  return (
-    <div className="status-line">
-      <ModeViewer mode={mode} />
-    </div>
-  );
+  return <ModeViewer mode={mode} />;
 };
 
 export default StatusLine;
