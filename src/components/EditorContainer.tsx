@@ -83,7 +83,7 @@ const EditorContainer = () => {
   return (
     <ThemeProvider>
       <div className="editor-container">
-        <div className="menubar">
+        <div className="menubar-container">
           <MenubarWithTheme />
         </div>
         <div className="main-content">
