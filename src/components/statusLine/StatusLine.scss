@@ -1,0 +1,32 @@
+@use '../../styles/variables' as v;
+
+.status-line {
+  display: flex;
+  align-items: center;
+  background: v.$color-bg-statusbar;
+  color: #fff;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  font-size: 13px;
+  z-index: 10;
+}
+
+.mode-viewer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 90px;
+  padding: 0 12px;
+  justify-content: center;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 12px;
+}
+.normal-mode {
+  background: v.$color-bg-normal-mode;
+}
+.insert-mode {
+  background: v.$color-bg-insert-mode;
+}

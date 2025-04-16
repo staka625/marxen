@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import EditorContainer from './components/EditorContainer';
+import './App.scss';
 
 const App: React.FC = () => {
   return <EditorContainer />;
