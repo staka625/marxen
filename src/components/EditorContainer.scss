@@ -18,6 +18,7 @@
   display: flex;
   flex: 1 1 auto;
   height: 100%;
+  overflow: hidden;
 }
 .file-tree {
   width: v.$width-sidebar;
