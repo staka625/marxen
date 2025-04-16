@@ -1,12 +1,10 @@
 @use '../styles/variables' as v;
 
 .editor {
-  color: v.$color-fg;
   font-family: v.$font-family;
   font-size: 1rem;
   overflow-y: auto;
   border: none;
-  background: v.$color-bg-panel;
   height: 100%;
 }
 
