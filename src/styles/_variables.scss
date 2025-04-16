@@ -1,4 +1,16 @@
-$color-bg: #1e1e1e;
+:root[data-theme='frame'] {
+  --color-bg: #ffffff;
+}
+:root[data-theme='nord'] {
+  --color-bg: #fcfdff;
+}
+:root[data-theme='frame-dark'] {
+  --color-bg: #1a1a1a;
+}
+:root[data-theme='nord-dark'] {
+  --color-bg: #1b1c1d;
+}
+$color-bg: var(--color-bg, #1b1c1d);
 $color-bg-light: #252526;
 $color-bg-panel: #2c2c32;
 $color-bg-sidebar: #23272e;
