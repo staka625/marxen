@@ -1,0 +1,30 @@
+@use '../../styles/variables' as v;
+
+.file-tree-item {
+  padding-left: 16px;
+}
+.file-tree-item-content {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s;
+  &:hover {
+    background: v.$color-bg-light;
+  }
+}
+.file-tree-icon {
+  margin-right: 8px;
+  color: v.$color-folder;
+}
+.file-tree-element {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  font-size: 1em;
+  font-family: inherit;
+  color: inherit;
+  padding: 0 4px;
+}

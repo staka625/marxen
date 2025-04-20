@@ -1,0 +1,30 @@
+:root[data-theme='frame'] {
+  --color-bg: #ffffff;
+}
+:root[data-theme='nord'] {
+  --color-bg: #fcfdff;
+}
+:root[data-theme='frame-dark'] {
+  --color-bg: #1a1a1a;
+}
+:root[data-theme='nord-dark'] {
+  --color-bg: #1b1c1d;
+}
+$color-bg: var(--color-bg, #1b1c1d);
+$color-bg-light: #252526;
+$color-bg-panel: #2c2c32;
+$color-bg-sidebar: #23272e;
+$color-bg-statusbar: #23272e;
+$color-bg-menubar: #2c2c32;
+$color-fg: #d4d4d4;
+$color-fg-muted: #bfbfbf;
+$color-bg-insert-mode: #3794ff;
+$color-bg-normal-mode: limegreen;
+$color-folder: #cca700;
+$color-border: #333;
+
+$height-menubar: 32px;
+$height-statusbar: 24px;
+$width-sidebar: 240px;
+
+$font-family: 'Segoe UI', 'Noto Sans JP', 'sans-serif';

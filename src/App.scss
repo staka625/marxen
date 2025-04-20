@@ -1,0 +1,19 @@
+@use './styles/variables' as v;
+
+body {
+  background: v.$color-bg;
+  color: v.$color-fg;
+  font-family: v.$font-family;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}

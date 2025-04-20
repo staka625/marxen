@@ -6,6 +6,7 @@ import { Milkdown, useEditor, MilkdownProvider } from '@milkdown/react';
 import '@milkdown/crepe/theme/common/style.css';
 import '@milkdown/crepe/theme/nord-dark.css';
 import { VimMode } from '../utils/enum/VimMode';
+import './Editor.scss';
 
 const markdown = `# Milkdown React Crepe
 
@@ -13,25 +14,25 @@ const markdown = `# Milkdown React Crepe
 
 This is a demo for using Crepe with **React**.`;
 
-export const MilkdownEditor: FC = () => {
+const MilkdownEditor: FC = () => {
   useEditor((root) => {
     const crepe = new Crepe({
       root,
       defaultValue: markdown,
     });
     return crepe;
-  }, []);
+  });
 
   return <Milkdown />;
 };
 
-type MilkdownEditorWrapperProps = {
-  mode: VimMode;
-};
+interface MilkdownEditorWrapperProps {
+  vimMode: { mode: VimMode };
+}
 
-export const MilkdownEditorWrapper: React.FC<MilkdownEditorWrapperProps> = ({ mode }) => {
+export const MilkdownEditorWrapper: FC<MilkdownEditorWrapperProps> = ({ vimMode }) => {
   const onKeyDown = (event: React.KeyboardEvent) => {
-    if (mode !== VimMode.Insert) {
+    if (vimMode.mode !== VimMode.Insert) {
       event.preventDefault();
       event.stopPropagation();
     }
