@@ -27,7 +27,6 @@ export const MilkdownEditor: FC<MilkdownEditorProps> = ({ vimMode }) => {
     const from = state.selection.$from;
     if (from.pos > from.start()) {
       const newSelection = TextSelection.create(doc, from.pos - 1, from.pos - 1);
-      console.log('newRange', from.pos, from.start());
       transaction.deleteSelection().setSelection(newSelection);
       dispatch!(transaction);
       return true;
