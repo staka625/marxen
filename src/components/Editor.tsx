@@ -8,10 +8,13 @@ import '@milkdown/crepe/theme/nord-dark.css';
 import { VimMode } from '../utils/enum/VimMode';
 import './Editor.scss';
 import { selectTextblockEnd, selectTextblockStart } from '@milkdown/prose/commands';
-import { commandsCtx, Editor, rootCtx } from '@milkdown/kit/core';
-import { commonmark } from '@milkdown/kit/preset/commonmark';
+import { commandsCtx } from '@milkdown/kit/core';
 import { Crepe } from '@milkdown/crepe';
 import { TextSelection } from '@milkdown/prose/state';
+
+const markdown = `# Milkdown React Crepe
+> You're scared of a world where you're needed.
+This is a demo for using Crepe with **React**.`;
 
 type MilkdownEditorProps = {
   vimMode: { mode: VimMode };
@@ -117,17 +120,16 @@ export const MilkdownEditor: FC<MilkdownEditorProps> = ({ vimMode }) => {
 
   // ts-ignore
   const { get } = useEditor((root) => {
-    return Editor.make()
-      .config((ctx) => {
-        ctx.set(rootCtx, root);
-      })
-      .use(commonmark)
+    const crepe = new Crepe({ root, defaultValue: markdown });
+    crepe.editor
       .use(moveDown)
       .use(moveUp)
       .use(moveLeft)
       .use(moveRight)
       .use(selectLineStart)
-      .use(selectLineEnd) as Editor | Crepe | undefined;
+      .use(selectLineEnd);
+
+    return crepe;
   }, []);
 
   const editor = get();
